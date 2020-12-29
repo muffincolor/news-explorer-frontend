@@ -1,0 +1,294 @@
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 16px;
+}
+
+.card__image {
+    width: 100%;
+    height: 45%;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+.card__save {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    height: 40px;
+    display: flex;
+}
+
+.card__save-button {
+    border-radius: 8px;
+    width: 40px;
+    height: 100%;
+    outline: none;
+    padding: 0;
+
+    border: none;
+
+    background: #FFFFFF url("../../images/save.svg") no-repeat center;
+    background-size: 14px 19px;
+    margin-left: 10px;
+}
+
+.card__save-button_active {
+    background: #FFFFFF url("../../images/save_active.svg") no-repeat center;
+}
+
+.card__save-login {
+    height: 100%;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    background-color: white;
+    opacity: 0;
+
+    transition: opacity .3s ease-in;
+}
+
+.card__save-login_active {
+    opacity: 1;
+}
+
+.card__save-button:hover {
+    cursor: pointer;
+    background-image: url("../../images/save_hover.svg");
+}
+
+
+.card__delete {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    height: 40px;
+    display: flex;
+}
+
+.card__delete-button {
+    border-radius: 8px;
+    width: 40px;
+    height: 100%;
+    outline: none;
+    padding: 0;
+
+    border: none;
+
+    background: #FFFFFF url("../../images/delete.svg") no-repeat center;
+    background-size: 19px 19px;
+    margin-left: 10px;
+}
+
+.card__delete-help {
+    height: 100%;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-family: "Roboto", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    background-color: white;
+    opacity: 0;
+
+    transition: opacity .3s ease-in;
+}
+
+.card__delete-help_active {
+    opacity: 1;
+}
+
+.card__delete-button:hover {
+    cursor: pointer;
+    background-image: url("../../images/delete_hover.svg");
+}
+
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px 24px;
+}
+
+.card__date {
+    font-family: "Source Sans Pro", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #B6BCBF;
+}
+
+.card__title {
+    font-family: "Roboto Slab", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 30px;
+    color: #1A1B22;
+    margin-top: 12px;
+    margin-bottom: 16px;
+}
+
+.card__text {
+    font-family: "Roboto", "Arial", sans-serif;
+    width: 100%;
+    max-height: 112px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    color: #1A1B22;
+    margin-top: 0;
+    margin-bottom: 18px;
+
+    display: block;
+    display: -webkit-box;
+    line-clamp: 5;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis;
+}
+
+.card__producer {
+    font-family: "Roboto Slab", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    color: #B6BCBF;
+}
+
+.card__keyword {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    padding: 8px 12px;
+    background-color: white;
+    border-radius: 10px;
+
+    font-family: "Roboto", "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+    .card__image {
+        height: 35%;
+    }
+
+    .card__title {
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+
+    .card__text {
+        display: block;
+        display: -webkit-box;
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden; /* Обрезаем все, что не помещается в область */
+        text-overflow: ellipsis;
+        margin-bottom: 12px;
+        max-height: 88px;
+    }
+
+    .card__content {
+        padding: 16px 14px;
+    }
+
+    .card__save {
+        right: 8px;
+        top: 8px;
+    }
+
+    .card__save-login {
+        display: none;
+    }
+
+    .card__delete {
+        right: 8px;
+        top: 8px;
+    }
+
+    .card__keyword {
+        left: 8px;
+        top: 8px;
+    }
+
+    .card__delete-help {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+    .card__content {
+        box-sizing: border-box;
+        padding: 16px;
+    }
+
+    .card__delete-help {
+        display: none;
+    }
+
+    .card__save-login {
+        display: none;
+    }
+
+    .card__title {
+        font-size: 22px;
+        line-height: 28px;
+        margin-bottom: 10px;
+    }
+
+    .card__text {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 8px;
+        line-clamp: 4;
+        -webkit-line-clamp: 4;
+    }
+
+    .card__save {
+        right: 16px;
+        top: 16px;
+    }
+
+
+    .card__delete {
+        right: 16px;
+        top: 16px;
+    }
+
+    .card__keyword {
+        left: 16px;
+        top: 16px;
+    }
+}

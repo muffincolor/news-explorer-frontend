@@ -1,0 +1,31 @@
+@import "./vendor/normalize.css";
+@import "./vendor/fonts/Roboto/roboto.css";
+@import "./vendor/fonts/RobotoSlab/robotslab.css";
+@import "./vendor/fonts/SourceSansPro/SourceSansPro.css";
+
+.page {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility
+}
+
+.page__content {
+    max-width: 1440px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+.page__content_hidden::after {
+    content: "";
+    position: absolute;
+    z-index: 60;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    top: 0;
+    left: 0;
+}
