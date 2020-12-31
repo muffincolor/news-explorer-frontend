@@ -1,98 +1,98 @@
 .about {
-    width: 100%;
-    padding: 80px 200px 80px 104px;
-    display: grid;
-    box-sizing: border-box;
-    grid-template-columns: 464px 1fr;
-    grid-column-gap: 56px;
-    grid-template-areas: "about__photo about__content"
+  width: 100%;
+  padding: 80px 200px 80px 104px;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 464px 1fr;
+  grid-column-gap: 56px;
+  grid-template-areas: "about__photo about__content"
                          "about__photo about__content";
 }
 
 .about__content {
-    width: 80%;
-    grid-area: about__content;
+  width: 80%;
+  grid-area: about__content;
 }
 
 .about__photo {
-    grid-area: about__photo;
-    object-fit: cover;
-    height: 464px;
-    width: 464px;
-    border-radius: 1000px;
+  grid-area: about__photo;
+  object-fit: cover;
+  height: 464px;
+  width: 464px;
+  border-radius: 1000px;
 }
 
 .about__title {
-    grid-area: about__title;
-    font-family: "Roboto Slab", "Arial", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 40px;
-    line-height: 46px;
-    height: 46px;
-    color: #1A1B22;
-    margin: 40px 0 0;
+  grid-area: about__title;
+  font-family: "Roboto Slab", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+  height: 46px;
+  color: #1A1B22;
+  margin: 40px 0 0;
 }
 
 .about__subtitles {
-    grid-area: about__subtitles;
+  grid-area: about__subtitles;
 }
 
 .about__subtitle {
-    margin: 24px 0 0;
-    font-family: "Roboto", "Arial", sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 24px;
-    color: #1A1B22;
+  margin: 24px 0 0;
+  font-family: "Roboto", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1279px) {
-    .about {
-        padding: 60px 40px;
-        grid-template-columns: 232px 1fr;
-        grid-column-gap: 32px;
-    }
+  .about {
+    padding: 60px 40px;
+    grid-template-columns: 232px 1fr;
+    grid-column-gap: 32px;
+  }
 
-    .about__photo {
-        align-self: center;
-        height: 232px;
-        width: 232px;
-    }
+  .about__photo {
+    align-self: center;
+    height: 232px;
+    width: 232px;
+  }
 
-    .about__title {
-        font-size: 30px;
-        line-height: 40px;
-    }
+  .about__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
 
-    .about__content {
-        width: 100%;
-    }
+  .about__content {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
-    .about {
-        padding: 22px 24px 80px;
-        grid-template-columns: 100%;
-        grid-template-areas: "about__photo"
+  .about {
+    padding: 22px 24px 80px;
+    grid-template-columns: 100%;
+    grid-template-areas: "about__photo"
                          "about__content";
-    }
+  }
 
-    .about__photo {
-        height: 272px;
-        width: 272px;
-    }
+  .about__photo {
+    height: 272px;
+    width: 272px;
+  }
 
-    .about__title {
-        margin-top: 24px;
-    }
+  .about__title {
+    margin-top: 24px;
+  }
 
-    .about__subtitle {
-        margin-top: 16px;
-    }
+  .about__subtitle {
+    margin-top: 16px;
+  }
 
-    .about__content {
-        width: 100%;
-    }
+  .about__content {
+    width: 100%;
+  }
 }
