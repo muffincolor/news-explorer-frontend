@@ -2,6 +2,7 @@ import React from "react";
 import {NavLink} from 'react-router-dom'
 
 import logout from "../../images/logout.svg";
+import logout_dark from "../../images/logout_dark.svg";
 import {UserLoginContext} from "../../contexts/UserLoginContext";
 
 import "./Navigation.css";
@@ -26,7 +27,7 @@ function Navigation(props) {
         <button
           className={`navigation__profile-button ${style === "dark" && !isActive ? "navigation__button_dark" : "navigation__button_light"}`}>
           <span className="navigation__profile-name">Грета</span>
-          <img src={logout} className="navigation__profile-image" alt="Выйти"/>
+          <img src={style === "dark" ? logout_dark : logout} className="navigation__profile-image" alt="Выйти"/>
         </button>
         :
         <button

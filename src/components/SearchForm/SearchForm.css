@@ -25,6 +25,12 @@
   align-self: center;
   border: none;
   outline: none;
+  padding: 0 0 3px;
+}
+
+.search__input:focus {
+  padding: 0 0 3px;
+  border-bottom: 1px solid rgba(0, 0, 0, .5);
 }
 
 .search__button {

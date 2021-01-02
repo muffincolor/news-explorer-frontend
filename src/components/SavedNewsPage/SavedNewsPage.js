@@ -4,7 +4,16 @@ import "./SavedNewsPage.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 
-function SavedNewsPage() {
+function SavedNewsPage(props) {
+  const { changeStyle } = props;
+
+  React.useEffect(() => {
+    if (document.documentElement.clientWidth < 768) {
+      changeStyle("light");
+    }
+    changeStyle("dark");
+  });
+
   return (
     <>
       <SavedNewsHeader/>

@@ -82,6 +82,7 @@
   .about__photo {
     height: 272px;
     width: 272px;
+    justify-self: center;
   }
 
   .about__title {
