@@ -1,0 +1,126 @@
+.footer {
+  font-family: "Roboto", "Arial", sans-serif;
+  max-width: 1440px;
+  min-width: 320px;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  padding: 32px 104px 26px;
+}
+
+.footer__copyright {
+  align-self: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+}
+
+.footer__menu {
+  align-self: center;
+  justify-self: flex-end;
+
+  display: flex;
+  align-items: center;
+}
+
+.footer__link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  margin-left: 32px;
+  text-decoration: none;
+  transition: opacity .2s ease-in;
+}
+
+.footer__link:hover {
+  cursor: pointer;
+  opacity: .8;
+}
+
+.footer__link:first-of-type {
+  margin-left: 0;
+}
+
+.footer__image-link {
+  width: 20px;
+  height: 20px;
+  margin-left: 28px;
+  transition: opacity .2s ease-in;
+}
+
+.footer__image-link:hover {
+  opacity: .8;
+  cursor: pointer;
+}
+
+.footer__image-link:first-of-type {
+  margin-left: 50px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1279px) {
+  .footer {
+    grid-template-columns: 43% 57%;
+    padding: 24px 40px 18px;
+  }
+
+  .footer__link {
+    margin-left: 16px;
+  }
+
+  .footer__image-link {
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .footer {
+    box-sizing: border-box;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .footer__menu {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 75% 25%;
+  }
+
+  .footer__link {
+    text-align: left;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .footer__link:first-of-type {
+    margin-top: 0;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer__copyright {
+    margin-top: 44px;
+  }
+
+  .footer__image-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .footer__image-link {
+    margin: 0;
+  }
+
+  .footer__image-link:first-of-type {
+    margin: 0;
+  }
+}
