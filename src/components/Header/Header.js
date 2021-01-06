@@ -2,24 +2,25 @@ import React from "react";
 
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 
 function Header(props) {
-  const {style, isActivePopup, setActivePopup} = props
+  const {style, setLoginPopupActive, onSignOut } = props;
 
-  const [active, setActive] = React.useState(false);
+  const [hiddenMenuActive, setHiddenMenuActive] = React.useState(false);
+
+  const handleBurgerClick = () => {
+    setHiddenMenuActive(!hiddenMenuActive);
+  }
 
   return (
-    <header className={`header ${active ? "header_active" : ""}`}>
+    <header className={`header ${hiddenMenuActive ? "header_active" : ""}`}>
       <NavLink to="/"
-               className={`header__logo ${style === "dark" && !active ? "header__logo_dark" : ""}`}>NewsExplorer</NavLink>
+               className={`header__logo ${style === "dark" && !hiddenMenuActive ? "header__logo_dark" : ""}`}>NewsExplorer</NavLink>
       <button
-        className={`header__burger ${active ? "header__burger_active" : ""} ${style === 'dark' ? "header__burger_dark" : ""}`}
-        onClick={(e) => {
-          setActivePopup(!isActivePopup);
-          setActive(!active);
-        }}/>
-      <Navigation isActive={active} style={style}/>
+        className={`header__burger ${hiddenMenuActive ? "header__burger_active" : ""} ${style === 'dark' ? "header__burger_dark" : ""}`}
+        onClick={handleBurgerClick}/>
+      <Navigation onSignOut={onSignOut} setLoginPopupActive={setLoginPopupActive} isHiddenMenuActive={hiddenMenuActive} style={style}/>
     </header>
   );
 }
