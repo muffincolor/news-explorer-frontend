@@ -3,8 +3,6 @@ import React from "react";
 import "./Preloader.css";
 
 function Preloader() {
-  const [loading, setLoading] = React.useState(true);
-
   return (
     <div className="preloader">
       <div className="preloader__circle">

@@ -9,11 +9,11 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <span className="footer__copyright">© 2020 Supersite, Powered by News API</span>
+      <span className="footer__copyright">© 2020 NewsExplorer, Powered by News API</span>
       <div className="footer__menu">
         <nav className="footer__links">
           <NavLink to="/" className="footer__link">Главная</NavLink>
-          <NavLink to="https://praktikum.yandex.ru/" className="footer__link">Яндекс.Практикум</NavLink>
+          <a href="https://praktikum.yandex.ru/" className="footer__link">Яндекс.Практикум</a>
         </nav>
         <div className="footer__image-links">
           <img src={github} className="footer__image-link" alt="Ссылка на GitHub"/>

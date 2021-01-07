@@ -164,6 +164,12 @@
   box-shadow: none;
 }
 
+.popup__button_disabled:hover {
+  color: #B6BCBF;
+  background-color: #E6E8EB;
+  box-shadow: none;
+}
+
 .popup__help {
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
@@ -197,6 +203,21 @@
   line-height: 15px;
   margin-top: 3px;
   color: #FF0000;
+}
+
+.popup__result-error {
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  margin-top: 3px;
+  color: #FF0000;
+
+  
+  text-align: center;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .popup__login-button {

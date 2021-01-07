@@ -3,38 +3,35 @@ import {Route, Switch, useHistory} from 'react-router-dom';
 import {UserLoginContext} from '../../contexts/UserLoginContext'
 import MainPage from "../MainPage/MainPage";
 import SavedNewsPage from "../SavedNewsPage/SavedNewsPage";
-import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const history = useHistory();
 
-  const [isActivePopup, setActivePopup] = React.useState(false);
-  const [loggedIn, setLoggedIn] = React.useState(true);
-  const [style, setStyle] = React.useState("light");
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [isLoginPopupActive, setLoginPopupActive] = React.useState(false);
+
+  const onSignOut = () => {
+    setCurrentUser({});
+    localStorage.removeItem("jwt");
+  }
 
   React.useEffect(() => {
-    history.listen(nextLocation => {
-      console.log();
-      if (document.documentElement.clientWidth < 768) {
-        setStyle("light");
-      } else {
-        setStyle(nextLocation.pathname === "/saved-news" ? "dark" : "light");
+    history.listen((location, action) => {
+      if(action === "PUSH" && location.pathname === "/") {
+        setLoginPopupActive(false);
       }
-    });
+    })
   });
 
   return (
-    <div className={`page__content ${isActivePopup ? "page__content_hidden" : ""}`}>
-      <UserLoginContext.Provider value={loggedIn}>
-        <Header isActivePopup={isActivePopup} setActivePopup={setActivePopup}
-                style={style}/>
+    <div className={`page__content`}>
+      <UserLoginContext.Provider value={currentUser}>
         <Switch>
-          <Route path="/saved-news">
-            <SavedNewsPage changeStyle={setStyle}/>
-          </Route>
+          <ProtectedRoute setLoginPopupActive={setLoginPopupActive} onSignOut={onSignOut} user={currentUser} path="/saved-news" component={SavedNewsPage}/>
           <Route exact path="/">
-            <MainPage changeStyle={setStyle}/>
+            <MainPage isLoginPopupActive={isLoginPopupActive} setLoginPopupActive={setLoginPopupActive} onSignOut={onSignOut} setCurrentUser={setCurrentUser}/>
           </Route>
         </Switch>
         <Footer/>
