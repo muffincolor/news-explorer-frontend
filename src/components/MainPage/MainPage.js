@@ -14,11 +14,15 @@ import ErrorFound from "../ErrorFound/ErrorFound";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
+import {showCardsAmount, waitTimeout} from "../../utils/constants";
 
 function MainPage(props) {
-  const { setCurrentUser, onSignOut } = props;
+  const { setCurrentUser, onSignOut, setLoginPopupActive, isLoginPopupActive } = props;
+
+  const [currentNewsAmount, setCurrentNewsAmount] = React.useState(showCardsAmount);
 
   const [alreadyFoundSth, setAlreadyFoundSth] = React.useState(false);
+  const [isFormBlocked, setFormBlocked] = React.useState(false);
 
   const [articlesData, setArticlesData] = React.useState([]);
   const [articlesDataHidden, setArticlesDataHidden] = React.useState(true);
@@ -26,7 +30,6 @@ function MainPage(props) {
   const [isNotFoundActive, setNotFoundActive] = React.useState(false);
   const [isErrorActive, setErrorActive] = React.useState(false);
 
-  const [isLoginPopupActive, setLoginPopupActive] = React.useState(false);
   const [isRegisterPopupActive, setRegisterPopupActive] = React.useState(false);
   const [isSupportPopupActive, setSupportPopupActive] = React.useState(false);
 
@@ -65,8 +68,14 @@ function MainPage(props) {
     setPreloaderActive(true);
 
     const currentDate = new Date();
-    const pastDate = new Date();
-    pastDate.setTime(currentDate.getTime() - (7 * 24 * 3600));
+    const pastDate = new Date(currentDate.valueOf() - ((24 * 60 * 60 * 1000) * 7));
+
+    setTimeout(() => {
+      if(articlesData.length === 0) {
+        console.log(articlesData);
+        setErrorActive(true);
+      }
+    }, waitTimeout * 1000);
 
     newsApi.getNewsByKeyword(keyword, changeDateFormat(pastDate), changeDateFormat(currentDate), 100)
       .then((res) => {
@@ -90,6 +99,7 @@ function MainPage(props) {
 
   const handleRegister = (values) => {
     const { email, password, name } = values;
+    setFormBlocked(true);
     mainApi.registerUser(email, password, name)
     .then((res) => {
       if(res.message) {
@@ -98,6 +108,7 @@ function MainPage(props) {
       }
 
       closeAllPopups();
+      setFormBlocked(false);
       setSupportPopupActive(true);
     })
     .catch((err) => {
@@ -107,13 +118,14 @@ function MainPage(props) {
 
   const handleLogin = (values) => {
     const { email, password } = values;
+    setFormBlocked(true);
     mainApi.loginUser(email, password)
     .then((res) => {
       localStorage.setItem("jwt", res.token);
       closeAllPopups();
-
       mainApi.getUserInfo(localStorage.getItem("jwt"))
       .then((res) => {
+        setFormBlocked(false);
         setCurrentUser(res);
       })
       .catch((err) => {
@@ -157,19 +169,23 @@ function MainPage(props) {
   }
 
   const showCards = () => {
-    setArticlesDataHidden(false);
+    if(currentNewsAmount + showCardsAmount >= articlesData.length) {
+      setArticlesDataHidden(false);
+    } else {
+      setCurrentNewsAmount(currentNewsAmount + showCardsAmount);
+    }
   }
 
   return (
     <>
       {isLoginPopupActive ?
-        <Login loginMessageError={loginMessageError} setLoginMessageError={setLoginMessageError} openRegisterPopup={openRegisterPopup} onLogin={handleLogin} onClose={closePopupsByButtons}/>
+        <Login isFormBlocked={isFormBlocked} loginMessageError={loginMessageError} setLoginMessageError={setLoginMessageError} openRegisterPopup={openRegisterPopup} onLogin={handleLogin} onClose={closePopupsByButtons}/>
         :
         <></>
       }
 
       {isRegisterPopupActive ?
-        <Register setRegisterMessageError={setRegisterMessageError} registerMessageError={registerMessageError} openLoginPopup={openLoginPopup} onRegister={handleRegister} onClose={closePopupsByButtons}/>
+        <Register isFormBlocked={isFormBlocked} setRegisterMessageError={setRegisterMessageError} registerMessageError={registerMessageError} openLoginPopup={openLoginPopup} onRegister={handleRegister} onClose={closePopupsByButtons}/>
         :
         <></>
       }
@@ -215,7 +231,7 @@ function MainPage(props) {
                                   <div className="cards">
                                     <h2 className="cards__title">Результаты
                                       поиска</h2>
-                                    <NewsCardList setLoginPopupActive={setLoginPopupActive} articles={articlesData.slice(0, 3)}/>
+                                    <NewsCardList setLoginPopupActive={setLoginPopupActive} articles={articlesData.slice(0, currentNewsAmount)}/>
                                     <button className="cards__button" onClick={showCards}>Показать еще</button>
                                   </div>
                                   :
